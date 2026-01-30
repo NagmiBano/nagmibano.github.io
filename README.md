@@ -23,7 +23,7 @@ Previously, I worked as a Project Associate at <b>ICGEB, New Delhi</b>, contribu
 ### 🌟 Highlights
 
 - 🎓 **Current Role:** PhD Scholar, Jamia Millia Islamia (India)
-- 🧪 ** Research Experience:** Ex-Project Associate, ICGEB (New Delhi)
+- 🧪 **Research Experience:** Ex-Project Associate, ICGEB (New Delhi)
 - 🏅 **Recognition:** Achievers of the Year (2023-2024), JMI Innovators Conclave Awardee
 
 ---
@@ -82,10 +82,10 @@ It avoids heavy frameworks to ensure **performance, clarity, and long-term maint
 
 ```text
 .
-├── index.html           # Main website source code
+├── index.html          # Main website source code
 ├── nagmi.png           # Profile image asset
-├── Bano_Nagmi.pdf  # Downloadable academic CV
-└── README.md            # Repository documentation
+├── Bano_Nagmi.pdf      # Downloadable academic CV
+└── README.md           # Repository documentation
 ````
 
 ---
@@ -97,7 +97,7 @@ To view or modify this portfolio locally:
 1. **Clone the repository**
 
    ```bash
-   git clone [https://github.com/NagmiBano/nagmibano.github.io.git](https://github.com/NagmiBano/nagmibano.github.io.git)
+   git clone https://github.com/NagmiBano/nagmibano.github.io.git
 
    ```
 
@@ -129,7 +129,7 @@ To view or modify this portfolio locally:
 
 * 🆔 **ORCID:** [https://orcid.org/0000-0002-7336-8928](https://orcid.org/0000-0002-7336-8928)
   
-* 🐙 **GitHub:** [https://github.com/NagmiBano](https://github.com/NagmiBano)
+
 
 
 ##
