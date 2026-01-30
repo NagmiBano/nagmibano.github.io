@@ -1,66 +1,133 @@
+<!-- 
+    SECTION A: DOCUMENT TYPE DECLARATION
+    Modern HTML5 website structure.
+-->
 <!DOCTYPE html>
+
+<!-- 
+    SECTION B: ROOT ELEMENT
+-->
 <html lang="en">
+
+<!-- 
+    SECTION C: THE HEAD (Metadata & Settings)
+-->
 <head>
+    
+    <!-- C.1: Character Encoding -->
     <meta charset="UTF-8">
+
+    <!-- C.2: Viewport Settings (CRITICAL FOR MOBILE) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- C.3: Browser Tab Title -->
     <title>Nagmi Bano | PhD Scholar at JMI</title>
+
+    <!-- C.4: SEO Description -->
     <meta name="description" content="Academic Portfolio of Nagmi Bano">
     
+    <!-- C.5: Favicon -->
     <link rel="icon" href="nagmi.png" type="image/png">
     
+    <!-- 
+       SECTION D: EXTERNAL LIBRARIES
+    -->
+
+    <!-- D.1: FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- D.2: Academicons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+    <!-- D.3: Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@700&family=Merriweather:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     
+    <!-- 
+       SECTION E: CSS STYLES
+    -->
     <style>
+        /* E.1: CSS VARIABLES (The Global Settings) */
         :root {
-            /* CHANGED: JMI Green Theme */
-            --primary: #005030; /* JMI Green */
-            --primary-dark: #003620;
-            --accent: #dca11d; /* Gold */
-            --text: #333;
-            --light-bg: #f8f9fa;
-            --white: #ffffff;
-            --inst-font: 'Merriweather', serif;
-            --transition: all 0.3s ease;
+            /* Brand Colors - Updated to JMI Green Theme */
+            --primary: #005030;      /* JMI Green */
+            --primary-dark: #003620; /* Darker Green */
+            --accent: #dca11d;       /* Gold */
             
-            /* Education Colors - Kept distinct for timeline visual */
-            --edu-phd: #005030; /* Green */
-            --edu-msc: #e67e22; /* Burnt Orange */
-            --edu-bsc: #20c997; 
-            --edu-xii: #fd7e14; 
+            /* Text & Backgrounds */
+            --text: #333;            
+            --light-bg: #f8f9fa;     
+            --white: #ffffff;        
+            
+            /* Fonts & Animation */
+            --inst-font: 'Merriweather', serif; 
+            --transition: all 0.3s ease;        
+            
+            /* -- Card Border Colors (Categorization) -- */
+            --edu-phd: #005030;       /* Green */
+            --edu-msc: #e67e22;       /* Burnt Orange */
+            --edu-bsc: #20c997;       /* Teal */
+            --edu-xii: #fd7e14;       /* Orange */
+            
+            /* -- Referee Card Colors -- */
+            --ref-1: #005030; /* Green */
+            --ref-2: #dc3545; /* Teal */
+            --ref-3: #6f42c1; /* Purple */
+            --ref-4: #008080; /* Red */
         }
 
+        /* E.2: GLOBAL RESETS */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Roboto', sans-serif; line-height: 1.6; color: var(--text); background: var(--light-bg); padding-top: 65px; }
+        
+        html { 
+            scroll-behavior: smooth; 
+            scroll-padding-top: 65px; 
+        } 
+        
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            line-height: 1.6; 
+            color: var(--text); 
+            background: var(--light-bg); 
+            padding-top: 50px; 
+            overflow-x: hidden; 
+        }
+        
+        /* Basic link styling */
         a { text-decoration: none; color: inherit; transition: var(--transition); }
         
-        /* --- Separator --- */
+        /* The decorative line separating sections */
         .separator {
             border: 0;
             height: 4px; 
             background: radial-gradient(circle, var(--primary) 0%, rgba(0,80,48,0) 90%);
             margin: 3rem 0;
             opacity: 0.8;
+            page-break-after: avoid; 
         }
 
-        /* --- Header --- */
+        /* E.3: HEADER & NAVIGATION STYLES */
         header { 
             background: rgba(255, 255, 255, 0.98); 
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; height: 70px;
+            backdrop-filter: blur(10px); 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); 
+            position: fixed; 
+            top: 0; left: 0; width: 100%; 
+            z-index: 1000; 
+            height: 50px; 
             transition: all 0.3s ease;
         }
 
         .header-content {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 0 30px; height: 100%; max-width: 1400px; margin: 0 auto;
+            padding: 0 20px; height: 100%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            position: relative;
         }
 
         .header-name {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.3rem; 
             font-weight: 700;
             color: var(--primary); 
             text-decoration: none;
@@ -78,6 +145,7 @@
         
         .header-name:hover { color: var(--accent) !important; }
 
+        /* Navigation Menu (Desktop View) */
         .nav-list { 
             display: flex; 
             list-style: none; 
@@ -90,10 +158,10 @@
         .nav-link { 
             color: var(--primary); 
             text-transform: uppercase; 
-            font-size: 0.85rem; 
+            font-size: 0.8rem;
             font-weight: 600; 
             letter-spacing: 0.5px;
-            padding: 8px 10px; 
+            padding: 5px 8px; 
             border: none;
             border-radius: 4px;
             transition: all 0.3s ease;
@@ -104,39 +172,54 @@
         
         .nav-link:hover { 
             color: var(--accent);
-            background: rgba(0, 80, 48, 0.05); /* Greenish tint */
+            background: rgba(0, 80, 48, 0.05);
         }
         
         .nav-link::after {
             content: '';
             position: absolute;
-            width: 0;
+            width: 0; 
             height: 2px;
-            bottom: 5px;
+            bottom: 2px;
             left: 50%;
             background-color: var(--accent);
             transition: all 0.3s ease;
             transform: translateX(-50%);
         }
-        
         .nav-link:hover::after { width: 80%; }
 
+        /* State for the active section (Scroll Spy) */
+        .nav-link.active-section {
+            color: var(--accent) !important; 
+        }
+        .nav-link.active-section::after {
+            width: 80%;
+        }
+
+        /* Mobile Menu Button */
         .nav-toggle { 
             display: none; 
-            font-size: 1.5rem; 
+            font-size: 1.3rem; 
             cursor: pointer; 
             color: var(--primary); 
             margin-left: auto; 
             transition: transform 0.3s ease;
+            z-index: 2001; 
         }
         .nav-toggle.open { transform: rotate(90deg); }
 
-        /* --- Sidebar Socials --- */
+        /* E.4: SIDEBAR STYLES */
         .sticky-sidebar {
-            position: fixed; top: 50%; left: 0; transform: translateY(-50%);
-            z-index: 1100; display: flex; flex-direction: column; gap: 12px;
-            background-color: var(--white); padding: 15px 8px;
-            border-radius: 0 12px 12px 0; box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+            position: fixed; 
+            top: 50%;                 
+            left: 0;                  
+            transform: translateY(-50%); 
+            z-index: 1100; 
+            display: flex; flex-direction: column; gap: 12px;
+            background-color: var(--white);
+            padding: 15px 8px;
+            border-radius: 0 12px 12px 0; 
+            box-shadow: 2px 0 8px rgba(0,0,0,0.1);
             border: 1px solid #f0f0f0;
         }
 
@@ -147,18 +230,64 @@
 
         .sticky-sidebar .h-social:hover { color: var(--accent); transform: scale(1.2); }
 
-        /* --- Hero Section --- */
+        /* E.4.B: BACK-TO-TOP BUTTON */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;              
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent); 
+            color: var(--primary);    
+            border-radius: 50%;       
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 9999;            
+            opacity: 0;               
+            transform: translateY(20px); 
+            pointer-events: none;     
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;               
+            transform: translateY(0); 
+            pointer-events: auto;     
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--primary); 
+            color: var(--accent);
+            transform: translateY(-5px); 
+        }
+
+        /* E.5: HERO SECTION */
+        .hero-section-wrapper {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            width: 100%;
+            display: flex;
+            justify-content: center; 
+        }
+
         .hero { 
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); 
-            color: var(--white); padding: 4rem 2rem; position: relative;
+            color: var(--white); 
+            padding: 2rem 1rem; 
+            position: relative;
             display: flex; justify-content: center; align-items: center; gap: 4rem;
-            min-height: 450px;
+            min-height: auto; 
+            max-width: 1200px; 
+            width: 100%;
         }
         
         .hero-main { text-align: center; flex: 1; max-width: 600px; }
         
         .hero-img { 
-            width: 170px; height: 170px; border-radius: 50%; 
+            width: 190px; height: 190px; 
+            border-radius: 50%; 
             border: 4px solid var(--accent); object-fit: cover; margin-bottom: 1rem; 
             background-color: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
@@ -174,11 +303,23 @@
         }
         .hero-role-link:hover { color: var(--accent); border-color: var(--accent); }
 
+        .hero-contact {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+        }
+        .hero-contact i { color: var(--accent); margin-right: 5px; }
+        .hero-contact a { color: #fff; text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.4); transition: 0.3s; }
+        .hero-contact a:hover { color: var(--accent); border-color: var(--accent); }
+
+        /* -- Floating Stats Box -- */
         .hero-stats {
             background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 15px; padding: 2rem;
-            width: 300px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: left;
-            animation: float 4s ease-in-out infinite;
+            width: 320px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: left;
+            animation: float 4s ease-in-out infinite; 
         }
         
         @keyframes float {
@@ -187,7 +328,7 @@
             100% { transform: translateY(0px); }
         }
 
-        .stat-row-link {
+        .stat-row-link, .stat-row-container {
             text-decoration: none; display: block; border-bottom: 1px solid rgba(255,255,255,0.1);
             transition: transform 0.2s ease, background 0.2s; border-radius: 4px;
         }
@@ -199,205 +340,267 @@
         .stat-label { font-weight: 400; color: #ddd; display: flex; align-items: center; gap: 10px; }
         .stat-value { font-weight: 700; color: var(--accent); font-size: 1.2rem; transition: color 0.2s; }
         
-        .cv-btn {
-            display: block; width: 100%; padding: 12px; background: var(--accent);
-            color: var(--primary-dark); text-align: center; font-weight: 700;
-            border-radius: 8px; margin-top: 20px; transition: transform 0.2s, box-shadow 0.2s;
-            text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.5px; text-decoration: none;
+        .stat-toggle { cursor: pointer; color: #ddd; padding: 0 10px; transition: color 0.3s; }
+        .stat-toggle:hover { color: var(--accent); }
+        .stat-label-link { color: #ddd; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .stat-label-link:hover { color: var(--accent); }
+
+        /* The Dropdown list inside the Stats box */
+        .pub-breakdown {
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;
+            background: rgba(0,0,0,0.1); border-radius: 4px;
         }
-        .cv-btn:hover {
-            transform: translateY(-3px); box-shadow: 0 5px 15px rgba(220, 161, 29, 0.4);
-            background: #fff; color: var(--primary);
+        .pub-breakdown.open { max-height: 300px; }
+        
+        .pub-breakdown a {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 8px 15px; 
+            font-size: 0.9rem; color: #eee;
+            border-bottom: 1px dashed rgba(255,255,255,0.1); text-decoration: none;
+        }
+        .pub-breakdown a:hover { color: var(--accent); background: rgba(255,255,255,0.05); }
+        .pub-breakdown a:last-child { border-bottom: none; }
+        
+        .pub-badge {
+            color: var(--accent);
+            font-size: 0.9rem; 
+            font-weight: bold;
+        }
+        
+        .secondary-pub-item span { color: #a8d0e6; opacity: 0.9; }
+        .secondary-pub-item i { color: #a8d0e6 !important; }
+        .secondary-pub-item .pub-badge { color: #a8d0e6; }
+
+        .patent-pub-item span { color: var(--accent); opacity: 1; font-weight: bold; }
+        .patent-pub-item i { color: var(--accent) !important; }
+        .patent-pub-item .pub-badge { color: var(--accent); }
+
+        /* CV Download Buttons */
+        .cv-btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .cv-btn-half {
+            flex: 1;
+            padding: 12px;
+            background: var(--accent);
+            color: var(--primary-dark);
+            text-align: center;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .cv-btn-half:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(220, 161, 29, 0.4);
+            background: #fff;
+            color: var(--primary);
         }
 
-        /* --- Container & Titles --- */
+        /* E.6: GENERAL CONTENT SECTIONS */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+        
         .section-title { 
             font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--primary); 
             margin-bottom: 1.5rem; border-left: 5px solid var(--accent); padding-left: 15px;
         }
 
-        /* --- Profile & Interests --- */
-        .profile-text { text-align: justify; font-size: 1.05rem; color: #444; margin-bottom: 2rem; }
-        .interests-wrapper { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem; }
+        .profile-text { text-align: justify; font-size: 1.05rem; color: #444; margin-bottom: 1.5rem; }
+        
+        /* Interest Tags */
+        .interests-wrapper { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 0.5rem; }
         .int-tag { 
             background: var(--white); border: 1px solid #ddd; padding: 6px 12px; 
             border-radius: 4px; font-weight: 500; color: var(--primary); box-shadow: 0 2px 4px rgba(0,0,0,0.05); font-size: 0.9rem;
         }
         .int-tag:hover { background: var(--primary); color: var(--white); }
 
-        /* --- Education --- */
-        .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
-        
-        .edu-card { 
-            background: var(--white); padding: 1.5rem; border-radius: 8px; 
-            border-top: 5px solid #ccc; box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .sub-heading-bold { 
+            color: var(--primary); 
+            font-weight: 700; 
+            font-size: 1.15rem; 
+            display: block; 
+            margin-top: 2rem;
+            margin-bottom: 1rem; 
+            font-family: 'Roboto', sans-serif;
         }
-        .edu-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
 
-        .edu-phd { border-top-color: var(--edu-phd); }
-        .edu-msc { border-top-color: var(--edu-msc); }
-        .edu-bsc { border-top-color: var(--edu-bsc); }
-
-        .edu-card h4 { font-size: 1.1rem; color: var(--text); margin-bottom: 5px; }
+        /* E.7: EDUCATION & EXPERIENCE CARDS */
+        .edu-grid, .exp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
         
-        .inst-link { 
-            font-family: var(--inst-font); font-size: 1rem; color: var(--primary); 
-            display: block; margin-bottom: 5px; text-decoration: none; 
-            font-weight: 600; transition: color 0.2s;
+        .edu-card, .exp-box { 
+            background: var(--white); padding: 1.8rem 1.5rem; border-radius: 8px; 
+            border-top: 6px solid #ccc; 
+            border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; 
+            position: relative; display: flex; flex-direction: column;
         }
-        .inst-link:hover { color: var(--accent); }
 
-        .edu-meta { display: flex; justify-content: space-between; font-size: 0.9rem; color: #666; margin-top: 10px;}
-
-        /* --- Experience --- */
-        .exp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .edu-phd { border-top-color: var(--edu-phd); } .edu-msc { border-top-color: var(--edu-msc); }
+        .edu-bsc { border-top-color: var(--edu-bsc); } .edu-xii { border-top-color: var(--edu-xii); }
         
-        .exp-box {
-            background: var(--white); padding: 1.2rem; border-radius: 6px; 
-            border-left: 4px solid; box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
-            display: flex; flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; 
-        }
-        .exp-box:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .exp-full { border-top-color: #035a34; } .exp-part { border-top-color: #2e7d32; } 
 
-        .exp-full { border-left-color: #035a34; } 
-        .exp-part { border-left-color: #2e7d32; } 
-        .exp-role { font-weight: 700; font-size: 1.1rem; color: var(--text); }
+        /* UPDATED: Specific hover effects for Education Cards */
+        .edu-phd:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            border-color: var(--edu-phd);
+        }
+        .edu-msc:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            border-color: var(--edu-msc);
+        }
+        .edu-bsc:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            border-color: var(--edu-bsc);
+        }
+        .edu-xii:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            border-color: var(--edu-xii);
+        }
         
-        .exp-inst { 
-            font-family: var(--inst-font); color: var(--primary); 
-            font-weight: 600; font-size: 0.95rem; margin: 5px 0; 
-            text-decoration: none; transition: color 0.2s;
+        /* UPDATED: Specific hover effects for Experience Cards */
+        .exp-full:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            border-color: #035a34;
         }
-        .exp-inst:hover { color: var(--accent); }
+        .exp-part:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            border-color: #2e7d32;
+        }
 
+        .edu-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+        .edu-card h4 { font-size: 1.15rem; color: var(--text); font-weight: 700; line-height: 1.3; margin: 0; flex: 1; padding-right: 10px; }
+        .year-span { color: #888; font-weight: 500; font-size: 0.95rem; white-space: nowrap; }
+        
+        .inst-link, .exp-inst { font-family: var(--inst-font); font-size: 1rem; color: var(--primary); display: block; margin-bottom: 5px; text-decoration: none; font-weight: 600; transition: color 0.2s; }
+        .inst-link:hover, .exp-inst:hover { color: var(--accent); }
+        
+        .exp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; width: 100%; }
+        .exp-role { font-weight: 700; font-size: 1.1rem; color: var(--text); margin-bottom: 0; }
         .exp-date { font-size: 0.85rem; color: #777; font-weight: bold; margin-bottom: 8px;}
-        .exp-desc { font-size: 0.9rem; color: #555; line-height: 1.4; }
-        .type-badge { align-self: flex-start; margin-top: auto; padding: 3px 8px; border-radius: 3px; font-size: 0.75rem; color: #fff; font-weight: bold; margin-top: 10px; }
-        .bg-full { background: #035a34; }
-        .bg-part { background: #2e7d32; color: #fff; }
+        .exp-desc { font-size: 0.9rem; color: #555; line-height: 1.4; margin-bottom: 10px;}
+        .type-badge { font-size: 0.75rem; color: #fff; font-weight: bold; padding: 3px 8px; border-radius: 3px; align-self: center; white-space: nowrap; }
+        .bg-full { background: #035a34; } .bg-part { background: #2e7d32; color: #fff; } 
 
-        /* --- Awards Styling --- */
-        .award-box-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
-            gap: 20px;
-        }
-        
+        /* E.8: AWARDS GRID */
+        .award-box-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
         .award-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 1.2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
+            background: var(--white); border-radius: 12px; padding: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: row; 
-            align-items: center;
-            justify-content: space-between; 
-            text-align: left;
+            display: flex; flex-direction: row; align-items: center;
+            justify-content: flex-start; gap: 20px; text-align: left;
+            position: relative; 
+        }
+        .award-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-color: var(--accent); }
+        .award-content-wrapper { flex: 1; padding-right: 0px; }
+        .award-top { font-weight: 700; color: var(--primary); font-size: 1.05rem; margin-bottom: 5px; line-height: 1.2; }
+        .award-bottom { font-size: 0.85rem; color: #666; line-height: 1.3; }
+        .award-badge-icon { font-size: 2.2rem; color: var(--accent); filter: drop-shadow(0 2px 4px rgba(220, 161, 29, 0.3)); flex-shrink: 0; margin-top: 10px; }
+
+        .award-number {
+            position: absolute; top: 5px; right: 5px; 
+            width: 22px; height: 22px;
+            background: var(--accent); color: #fff;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2); border: 2px solid #fff;
+            z-index: 5;
         }
 
-        .award-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-color: var(--accent);
-        }
-
-        .award-content-wrapper { flex: 1; padding-right: 15px; }
-
-        .award-top {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 1.05rem;
-            margin-bottom: 5px;
-            line-height: 1.2;
-        }
-
-        .award-bottom {
-            font-size: 0.85rem;
-            color: #666;
-            line-height: 1.3;
-        }
-
-        .award-badge-icon {
-            font-size: 2.2rem;
-            color: var(--accent); 
-            filter: drop-shadow(0 2px 4px rgba(220, 161, 29, 0.3));
-            flex-shrink: 0; 
-        }
-
-        /* --- Patents --- */
+        /* E.9: PATENTS GRID */
         .patent-box { 
             background: #fff; border: 1px solid #eee; padding: 1.5rem; 
             border-radius: 8px; margin-bottom: 1rem; display: flex; align-items: center; gap: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
         }
         .patent-box:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-color: var(--accent); }
-
         .patent-icon { font-size: 2rem; color: var(--accent); }
         .patent-link { color: var(--primary); font-weight: bold; text-decoration: none; transition: color 0.2s; }
-        .patent-link:hover { color: var(--accent); }
         
         @media (min-width: 900px) {
-            .grid-container {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
+            .grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
             .patent-box { margin-bottom: 0; }
         }
 
-        /* --- Contributions Accordion --- */
+        /* E.10: ACCORDION & PUBLICATIONS LISTS */
         .accordion-btn {
             width: 100%; padding: 1rem; text-align: left; 
-            background: var(--white); border: 1px solid #ddd; border-left: 4px solid var(--primary);
+            background: var(--white); 
+            border: 1px solid #ddd; 
+            border-left: 5px solid var(--primary); 
             margin-bottom: 5px; cursor: pointer;
             font-size: 1.05rem; font-weight: 600; color: var(--primary);
             display: flex; justify-content: space-between; align-items: center;
             transition: all 0.3s ease;
         }
-        .accordion-btn:hover { background: #f0f8f0; } /* Light Green */
-        
+        .accordion-btn:hover { background: #e8f5e9; }
+
         .accordion-btn.active { 
-            background: #e8f5e9; /* Light Green */
-            color: var(--primary); 
-            border-left: 6px solid var(--primary);
-            border-top: 2px solid #a5d6a7;
-            border-right: 2px solid #a5d6a7;
-            border-bottom: 2px solid #a5d6a7;
+            background: #fff; color: var(--primary); 
+            border-bottom: 1px solid transparent; 
+            border-left: 5px solid var(--primary);
+            border-top: 1px solid #ddd; border-right: 1px solid #ddd;
+            text-decoration: underline; margin-bottom: 0; 
+            border-bottom-left-radius: 0; border-bottom-right-radius: 0;
         }
         
         .panel { 
-            padding: 0 1rem; max-height: 0; overflow: hidden; 
-            transition: max-height 0.3s ease-out; background: var(--white);
-            border: 1px solid #eee; border-top: none; margin-bottom: 10px;
+            max-height: 0; overflow: hidden; 
+            transition: max-height 0.3s ease-out; 
+            background: var(--white);
+            border: 1px solid #ddd; border-top: none; 
+            border-left: 5px solid var(--primary); 
+            margin-bottom: 10px;
+            border-top-left-radius: 0; border-top-right-radius: 0;
         }
         
         .accordion-btn.active + .panel {
-            border-left: 2px solid #a5d6a7;
-            border-right: 2px solid #a5d6a7;
-            border-bottom: 2px solid #a5d6a7;
-            background: #f1f8e9;
+            border-left: 5px solid var(--primary); 
+            border-right: 1px solid #ddd; 
+            border-bottom: 1px solid #ddd; 
         }
         
-        .scrollable-list { max-height: 600px; overflow-y: auto; padding-right: 15px; }
+        .panel-content { padding: 20px; }
+        .scrollable-list { max-height: 600px; overflow-y: auto; padding: 15px 20px; }
         .scrollable-list::-webkit-scrollbar { width: 6px; }
         .scrollable-list::-webkit-scrollbar-track { background: #f1f1f1; }
         .scrollable-list::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
 
-        .pub-list { padding-left: 30px; list-style-type: decimal; }
-        .pub-item { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px dashed #eee; font-size: 0.95rem; }
-        .compact-list .pub-item { margin-bottom: 2px; padding-bottom: 2px; border: none; line-height: 1.3; }
-        .pub-item strong { color: #004d40; font-weight: 700; }
-        .pub-journal { font-style: italic; color: #555; font-size: 0.9rem; }
-        
-        .event-meta {
-            display: block; color: #666; font-size: 0.9rem; margin-top: 2px;
-            font-weight: 500; border-left: 3px solid var(--accent);
-            padding-left: 8px; margin-left: 2px;
+        .pub-list { padding-left: 30px; } 
+        .pub-item { 
+            margin-bottom: 1rem; padding: 12px; 
+            border-bottom: 1px dashed #eee; 
+            border: 1px solid transparent; border-bottom-color: #eee; 
+            border-radius: 6px; font-size: 0.95rem; 
+            transition: all 0.3s ease;
+        }
+        .pub-item:hover {
+            transform: translateY(-3px); background: #fff;
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-bottom-color: var(--accent);
+            z-index: 10; position: relative; 
         }
 
         .pub-doi { 
@@ -408,169 +611,280 @@
         }
         .pub-doi:hover { transform: translateY(-2px); box-shadow: 0 2px 5px rgba(0,0,0,0.2); text-decoration: none; color: #fff; }
 
-        /* --- Academic Referee Cards --- */
-        .referee-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
+        .event-meta {
+            display: block; color: #666; font-size: 0.9rem; margin-top: 4px;
+            font-weight: 500; border-left: 3px solid var(--accent);
+            padding-left: 8px; margin-left: 2px;
         }
+
+        /* E.11: COMPACT LIST (Reviews) */
+        .compact-list { padding: 0; list-style: none; text-align: justify; line-height: 2; }
+        .compact-list .pub-item { 
+            display: inline; margin: 0 2px; padding: 2px 6px; 
+            border: 1px solid transparent; font-size: 0.95rem; border-radius: 4px; 
+            transition: all 0.2s ease; cursor: default;
+        }
+        .compact-list .pub-item:hover { background: var(--primary); color: var(--white); box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .compact-list .pub-item::after { content: "|"; color: var(--accent); font-weight: 900; margin-left: 8px; margin-right: 2px; }
+        .compact-list .pub-item:last-child::after { content: ""; }
+        .compact-list .pub-item:hover::after { color: rgba(255,255,255,0.5); }
+
+        /* E.12: TECHNICAL PROFICIENCY GRID */
+        .tech-panel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; padding: 1.5rem 0.5rem; }
+        .tech-card {
+            background: #fff; padding: 1.5rem; border-radius: 8px;
+            border-top: 5px solid #ccc; 
+            border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .tc-green { border-top-color: var(--primary); }
+        .tc-orange { border-top-color: #e67e22; }
+        .tc-teal { border-top-color: #20c997; }
+        .tc-blue { border-top-color: #0d6efd; }
+
+        .tech-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        
+        /* UPDATED: Specific hover effects for Technical Cards */
+        .tc-green:hover { border-color: var(--primary); }
+        .tc-orange:hover { border-color: #e67e22; }
+        .tc-teal:hover { border-color: #20c997; }
+        .tc-blue:hover { border-color: #0d6efd; }
+
+        .tech-sub-title { font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 12px; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .tech-sub-title i { color: var(--accent); font-size: 1.2rem; }
+        .tech-ul { list-style: none; padding: 0; margin: 0; }
+        .tech-ul li { position: relative; padding-left: 20px; margin-bottom: 8px; font-size: 0.9rem; color: #555; line-height: 1.4; }
+        .tech-ul li::before { content: '\f00c'; font-family: 'Font Awesome 5 Free'; font-weight: 900; position: absolute; left: 0; top: 3px; color: var(--accent); font-size: 0.7rem; }
+
+        /* E.13: REFEREES GRID */
+        .referee-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
         .referee-card {
             background: #fff; padding: 1.5rem; border-radius: 8px;
-            border-left: 4px solid var(--primary); box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            border-top: 5px solid; 
+            border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
-        .referee-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-color: var(--accent); }
-
-        .referee-name { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 2px; }
-        .referee-role { font-size: 0.9rem; color: #666; font-weight: 400; }
-        .referee-title-line { font-size: 0.95rem; font-weight: 600; color: #333; margin-top: 5px; }
+        .ref-1 { border-top-color: var(--ref-1); } .ref-1:hover { border-color: var(--ref-1); transform: translateY(-5px); }
+        .ref-2 { border-top-color: var(--ref-2); } .ref-2:hover { border-color: var(--ref-2); transform: translateY(-5px); }
+        .ref-3 { border-top-color: var(--ref-3); } .ref-3:hover { border-color: var(--ref-3); transform: translateY(-5px); }
+        .ref-4 { border-top-color: var(--ref-4); } .ref-4:hover { border-color: var(--ref-4); transform: translateY(-5px); }
         
-        .referee-inst-link { 
-            font-size: 0.9rem; color: #555; display: block; margin-bottom: 10px; 
-            text-decoration: none; transition: color 0.3s ease;
-        }
-        .referee-inst-link:hover { color: var(--accent); text-decoration: none; }
-        
-        .referee-contact { font-size: 0.9rem; color: #444; margin-top: 8px; display: flex; align-items: center; gap: 8px; }
+        .ref-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
+        .referee-name { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 0; }
+        .referee-role { font-size: 0.85rem; color: #666; font-weight: 400; text-align: right; }
+        .referee-title-line { font-weight: 600; color: #444; font-size: 0.95rem; margin-bottom: 5px; }
+        .ref-inst-row { margin-bottom: 10px; font-size: 0.9rem; color: #555; display: flex; align-items: center; gap: 8px; }
+        .ref-inst-row a { color: #555; text-decoration: none; font-weight: 600; font-family: var(--inst-font); transition: 0.3s;}
+        .ref-inst-row a:hover { color: var(--accent); }
+        .referee-contact { font-size: 0.9rem; color: #444; margin-top: 5px; display: flex; align-items: center; gap: 8px; }
         .email-badge { color: var(--accent); font-size: 1.1rem; }
 
-        /* --- Footer --- */
+        /* E.14: FOOTER */
         footer { 
-            background: var(--primary-dark); 
-            color: #d1d5db; 
-            text-align: center; 
-            padding: 20px 0; 
-            margin-top: 3rem; 
-            border-top: 4px solid var(--accent); 
+            background: var(--primary-dark); color: #d1d5db; text-align: center; 
+            padding: 20px 0; margin-top: 3rem; border-top: 4px solid var(--accent); 
         }
-        
-        .footer-socials { 
-            margin: 0 0 10px 0; 
-            display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; 
-        }
-
+        .footer-socials { margin: 0 0 10px 0; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .footer-btn {
-            width: 35px; height: 35px;
-            background: rgba(255,255,255,0.1); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: #fff; font-size: 1.1rem; transition: all 0.3s;
+            width: 35px; height: 35px; background: rgba(255,255,255,0.1); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.1rem; transition: all 0.3s;
             text-decoration: none; border: 1px solid rgba(255,255,255,0.1);
         }
         .footer-btn:hover { transform: translateY(-3px); background: var(--accent); border-color: var(--accent); color: var(--primary-dark); }
-        
-        .footer-text { 
-            font-size: 0.85rem; line-height: 1.5; color: #aaa; font-weight: 400; letter-spacing: 0.5px;
-            display: inline-block;
-            border-bottom: 1px solid var(--accent); 
-            padding-bottom: 2px;
-        }
+        .footer-text { font-size: 0.8rem; line-height: 1.5; color: #aaa; font-weight: 400; letter-spacing: 0.5px; display: inline-block; border-bottom: 1px solid var(--accent); padding-bottom: 2px;}
 
-        /* Mobile Responsive */
+        /* E.15: MOBILE RESPONSIVE STYLES */
         @media (max-width: 900px) {
-            .sticky-sidebar { display: none; }
+            .header-content { justify-content: center; }
+            .header-name { 
+                display: block !important; opacity: 1 !important; transform: none !important; pointer-events: auto !important;
+                color: var(--accent) !important; font-size: 1.5rem; position: absolute; left: 50%;
+                transform: translateX(-50%) !important; margin: 0; white-space: nowrap; z-index: 1002;
+            }
+            .nav-toggle { display: block; position: absolute; right: 30px; }
+            
+            .nav-list { 
+                position: fixed; top: 50px; right: -100%; width: 45%; max-width: 200px;
+                height: auto; min-height: 300px; background: var(--white); 
+                flex-direction: column; justify-content: flex-start;
+                padding: 5px; box-shadow: -2px 2px 2px rgba(0,0,0,0.1); 
+                transition: right 0.3s ease-in-out; z-index: 2000; display: flex;
+                border-bottom-left-radius: 10px; border-left: 1px solid #eee; border-bottom: 1px solid #eee;
+            }
+            .nav-list.active { right: 0; }
+            
+            .nav-link { 
+                color: var(--primary) !important; text-align: left; font-size: 1rem;
+                padding: 9px 0; border-bottom: 1px solid #eee; border-radius: 0; width: 100%; display: block;
+            }
+            .sticky-sidebar { 
+                display: flex; left: auto; right: 0; top: 50%;
+                border-radius: 12px 0 0 12px; background-color: var(--white); border: 1px solid #eee;
+                padding: 10px 5px; box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+            }
             .hero { flex-direction: column; gap: 2rem; padding: 2rem 1rem; }
             .hero-stats { width: 100%; max-width: 400px; animation: none; }
-            
-            .header-content { justify-content: space-between; }
+            .exp-grid, .tech-panel-grid { grid-template-columns: 1fr; }
+        }
 
-            .header-name { 
-                display: block !important; font-size: 1.1rem; margin-right: auto;
-                white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 70%;
-                pointer-events: auto !important;
+        /* E.16: PRINT STYLES */
+        #print-header, #print-footer { display: none; }
+        @media print {
+            header, .sticky-sidebar, .nav-toggle, .cv-btn-group, .back-to-top { display: none !important; }
+            .hero-stats {
+                display: block !important; width: 100% !important; border: 1px solid #ddd !important;
+                box-shadow: none !important; margin-bottom: 20px !important; color: #000 !important;
+                animation: none !important; padding: 10px !important; background: none !important;
             }
-
-            .nav-list { 
-                display: none; flex-direction: column; 
-                background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); 
-                padding: 1.5rem; position: absolute; top: 70px; left: 0; width: 100%;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1); gap: 12px;
-                border-bottom: 3px solid var(--accent); border-radius: 0 0 15px 15px;
-                margin: 0; 
-            }
-            .nav-list.active { display: flex; }
-            
-            .nav-link {
-                color: #fff !important; background: var(--primary); text-align: center;
-                display: block; width: 100%; padding: 12px; border-radius: 50px; 
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            }
-            .nav-link:hover { background: var(--accent); transform: scale(1.02); }
-            .nav-link::after { display: none; }
-            
-            .nav-toggle { display: block; }
-            .hero h1 { font-size: 1.8rem; }
-            .exp-grid { grid-template-columns: 1fr; }
+            .hero-stats .stat-value, .hero-stats .stat-label, .hero-stats a, 
+            .hero h1 a, .hero-role-link, .hero-contact, .hero-contact a { color: #000 !important; text-decoration: none !important; border: none !important; }
+            .hero-stats .stat-row { border-bottom: 1px solid #eee !important; }
+            .stat-toggle { display: none !important; }
+            .pub-breakdown { display: block !important; max-height: none !important; height: auto !important; border: 1px solid #eee; margin-top: 10px; }
+            .pub-breakdown a { border-bottom: 1px solid #ddd; color: #000 !important; }
+            footer { display: block !important; background: none !important; color: #000 !important; border-top: 2px solid #333 !important; margin-top: 20px !important; }
+            .panel { max-height: none !important; overflow: visible !important; opacity: 1 !important; border: 1px solid #ddd !important; border-left: 5px solid var(--primary) !important; display: block !important; margin-bottom: 15px !important; }
+            .accordion-btn { border: none !important; border-left: 5px solid var(--primary) !important; background: none !important; color: #000 !important; padding-left: 10px !important; text-decoration: underline !important; font-weight: bold !important; margin-bottom: 0 !important; }
+            .accordion-btn i { display: none !important; }
+            .scrollable-list { max-height: none !important; overflow-y: visible !important; }
+            body { padding-top: 40px !important; padding-bottom: 80px !important; background: #fff !important; color: #000 !important; }
+            .container { max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
+            .separator { display: block !important; background: radial-gradient(circle, var(--primary) 0%, rgba(0,80,48,0) 90%) !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; margin: 30px 0 30px 0 !important; border: none !important; opacity: 1 !important; }
+            a { text-decoration: underline !important; color: var(--primary) !important; }
+            #print-footer { display: block !important; position: fixed; bottom: 0; left: 0; width: 100%; text-align: center; font-size: 0.8rem; color: #555; background-color: #fff; padding-top: 10px; padding-bottom: 10px; border-top: 1px solid #ccc; z-index: 9999; }
         }
     </style>
 </head>
+
+<!-- 
+    SECTION D: THE BODY
+-->
 <body>
 
+    <!-- D.1: CUSTOM PRINT FOOTER CONTAINER -->
+    <div id="print-footer">Downloaded from Nagmi Bano's Portfolio on <span id="print-date"></span></div>
+
+    <!-- D.2: SIDEBAR -->
     <div class="sticky-sidebar">
         <a href="mailto:nagmi2300973@st.jmi.ac.in" target="_blank" class="h-social" title="Email"><i class="fas fa-envelope"></i></a>
         <a href="https://www.linkedin.com/in/nagmi-bano-a20a11220/" target="_blank" class="h-social" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://scholar.google.com/citations?user=HCvLj5sAAAAJ&hl=en" target="_blank" class="h-social" title="Scholar"><i class="ai ai-google-scholar"></i></a>
         <a href="https://www.researchgate.net/profile/Nagmi-Bano" target="_blank" class="h-social" title="ResearchGate"><i class="ai ai-researchgate"></i></a>
         <a href="https://orcid.org/0000-0002-7336-8928" target="_blank" class="h-social" title="ORCID"><i class="ai ai-orcid"></i></a>
-		<a href="https://nagmibano.github.io/" target="_blank" class="h-social" title="Updated Personal Website"><i class="fas fa-globe"></i></a>
-
-
-
-
+        <a href="https://nagmibano.github.io/" target="_blank" class="h-social" title="Website"><i class="fas fa-globe"></i></a>
     </div>
 
+    <!-- BACK-TO-TOP BUTTON -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+    
+    <!-- D.3: MAIN HEADER -->
     <header id="main-header">
         <div class="header-content">
-            <a href="#" class="header-name">Nagmi Bano</a>
+            <a href="https://nagmibano.github.io/" class="header-name">Nagmi Bano</a>
 
             <ul class="nav-list" id="nav-menu">
+                <li class="nav-item"><a href="#profile" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
                 <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
-                <li class="nav-item"><a href="#patents" class="nav-link">Patents/Awards</a></li>
+                <li class="nav-item"><a href="#awards" class="nav-link">Awards</a></li>
+                <li class="nav-item"><a href="#patents" class="nav-link">Patents</a></li>
                 <li class="nav-item"><a href="#publications" class="nav-link">Publications</a></li>
-                <li class="nav-item"><a href="#professional" class="nav-link">Activities</a></li>
+                <li class="nav-item"><a href="#conferences" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="#technical" class="nav-link">Expertise</a></li>
                 <li class="nav-item"><a href="#referees" class="nav-link">Referees</a></li>
             </ul>
-
             <div class="nav-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
         </div>
     </header>
 
-    <section class="hero" id="hero-section">
-        <div class="hero-main">
-            <img src="nagmi.png" alt="Nagmi Bano" class="hero-img" onerror="this.src='https://via.placeholder.com/180?text=NB'">
-            <h1><a href="https://nagmibano.github.io/" class="hero-name-link">Nagmi Bano</a></h1>
-            <a href="https://www.jmi.ac.in/" target="_blank" class="hero-role-link">PhD Scholar at Jamia Millia Islamia</a>
-        </div>
-        
-        <div class="hero-stats">
-            <a href="https://scholar.google.com/citations?user=HCvLj5sAAAAJ&hl=en"  target="_blank" class="stat-row-link">
-                <div class="stat-row">
-                    <span class="stat-label"><i class="fas fa-quote-left"></i> Citations</span>
-                    <span class="stat-value">270+</span>
+    <!-- D.4: HERO SECTION -->
+    <div class="hero-section-wrapper" id="hero-section">
+        <section class="hero">
+            <!-- Left side: Photo & Intro Text -->
+            <div class="hero-main">
+                <img src="nagmi.png" alt="Nagmi Bano" class="hero-img" onerror="this.src='https://via.placeholder.com/180?text=NB'">
+                <h1><a href="https://nagmibano.github.io/" class="hero-name-link">Nagmi Bano</a></h1>
+                <a href="https://www.jmi.ac.in/" target="_blank" class="hero-role-link">PhD Scholar at Jamia Millia Islamia</a>
+                <div class="hero-contact">
+                    <i class="fas fa-envelope"></i> 
+                    <a href="mailto:nagmi2300973@st.jmi.ac.in">nagmi2300973@st.jmi.ac.in</a>
                 </div>
-            </a>
-            <a href="https://scholar.google.com/citations?user=HCvLj5sAAAAJ&hl=en"  target="_blank" class="stat-row-link">
-                <div class="stat-row">
-                    <span class="stat-label"><i class="fas fa-chart-line"></i> H-index</span>
-                    <span class="stat-value">08</span>
+            </div>
+            
+            <!-- Right side: Floating Statistics Box -->
+            <div class="hero-stats">
+                <div class="stat-row-link" style="padding:0;">
+                    <div class="stat-row">
+                        <a href="#publications" class="stat-label-link"><i class="fas fa-book"></i> Publications</a>
+                        <span class="stat-toggle" onclick="togglePubStats(event)"> <i class="fas fa-chevron-down"></i> </span>
+                        <a href="#publications" class="stat-value">26+</a>
+                    </div>
+                    <!-- Collapsible Dropdown (Counts extracted from list) -->
+                    <div class="pub-breakdown" id="pub-breakdown">
+                        <a href="#publications" onclick="triggerAccordion('pubs-journal')">
+                            <span><i class="fas fa-file-alt" style="margin-right:8px; font-size:0.8rem; color:rgba(255,255,255,0.7);"></i> Journal Articles</span>
+                            <span class="pub-badge">15</span>
+                        </a>
+                        <a href="#publications" onclick="triggerAccordion('pubs-comm')">
+                             <span><i class="fas fa-paper-plane" style="margin-right:8px; font-size:0.8rem; color:rgba(255,255,255,0.7);"></i> Communicated</span>
+                             <span class="pub-badge">3</span>
+                        </a>
+                        <a href="#publications" onclick="triggerAccordion('pubs-book')">
+                            <span><i class="fas fa-book-open" style="margin-right:8px; font-size:0.8rem; color:rgba(255,255,255,0.7);"></i> Book Chapters</span>
+                            <span class="pub-badge">8</span>
+                        </a>
+                        
+                        <a href="#patents" class="patent-pub-item">
+                            <span><i class="fas fa-certificate"></i> Patents</span>
+                            <span class="pub-badge">1</span>
+                        </a>
+                    </div>
                 </div>
-            </a>
-            <a href="https://www.webofscience.com/wos/author/record/37528336"   target="_blank" class="stat-row-link">
-                <div class="stat-row">
-                    <span class="stat-label"><i class="fas fa-check-circle"></i> Verified Reviews</span>
-                    <span class="stat-value">25+</span>
-                </div>
-            </a>
-            <a href="https://drive.google.com/file/d/16-RXGUm8oQrWDtdG9jq93epXD0vFlL8f/view"  target="_blank" class="cv-btn"><i class="fas fa-download"></i> Download Full CV</a>
-        </div>
-    </section>
 
+                <a href="https://scholar.google.com/citations?user=HCvLj5sAAAAJ&hl=en" target="_blank" class="stat-row-link">
+                    <div class="stat-row">
+                        <span class="stat-label"><i class="fas fa-quote-left"></i> Citations</span>
+                        <span class="stat-value">270+</span>
+                    </div>
+                </a>
+                <a href="https://scholar.google.com/citations?user=HCvLj5sAAAAJ&hl=en" target="_blank" class="stat-row-link">
+                    <div class="stat-row">
+                        <span class="stat-label"><i class="fas fa-chart-line"></i> H-index</span>
+                        <span class="stat-value">08</span>
+                    </div>
+                </a>
+                <a href="https://www.webofscience.com/wos/author/record/37528336" target="_blank" class="stat-row-link">
+                    <div class="stat-row">
+                        <span class="stat-label"><i class="fas fa-check-circle"></i> Verified Reviews</span>
+                        <span class="stat-value">25+</span>
+                    </div>
+                </a>
+                
+                <!-- Download Buttons -->
+                <div class="cv-btn-group">
+                    <a href="Bano_Nagmi_CV.pdf" target="_blank" class="cv-btn-half"><i class="fas fa-download"></i> Download Full CV</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- D.5: PROFILE SECTION -->
     <section id="profile" class="container" style="margin-top: 1rem;">
         <h2 class="section-title">Personal Profile</h2>
         <div class="profile-text">
-            I am a PhD scholar in Bioinformatics at Jamia Millia Islamia University, India, specialising in integrating artificial intelligence and computational biology. My research focuses on applying AI-driven sequence analysis, molecular enumeration, machine learning, and structural modelling to address critical challenges such as multidrug resistance and cancer resistance—both significant global health issues. I am eager to contribute to projects involving sequence analysis, the development of advanced drug discovery pipelines for personalised medicine, overcoming drug resistance, and building innovative deep-learning models for biomedical applications.
+            <p>
+                I am a PhD scholar in Bioinformatics at Jamia Millia Islamia University, India, specialising in integrating artificial intelligence and computational biology. My research focuses on applying AI-driven sequence analysis, molecular enumeration, machine learning, and structural modelling to address critical challenges such as multidrug resistance and cancer resistance—both significant global health issues. I am eager to contribute to projects involving sequence analysis, the development of advanced drug discovery pipelines for personalised medicine, overcoming drug resistance, and building innovative deep-learning models for biomedical applications.
+            </p>
         </div>
-        <hr class="separator">
-
-        <h2 class="section-title">Research Interests</h2>
+ 
+        <span class="sub-heading-bold">My Research Interests Include:</span>
+        
+        <!-- Interests Tags -->
         <div class="interests-wrapper">
             <div class="int-tag">AI in Biology</div>
             <div class="int-tag">Antimicrobial Resistance (AMR)</div>
@@ -587,67 +901,94 @@
         <hr class="separator">
     </section>
 
+    <!-- D.6: EDUCATION & EXPERIENCE SECTION -->
     <section id="education" class="container">
         <h2 class="section-title">Educational Background</h2>
-
-        <div class="edu-grid">
+        
+        <div class="edu-grid" style="margin-bottom: 3rem;">
             <div class="edu-card edu-phd">
-                <h4>PhD (Bioinformatics)</h4>
-                <a href="https://www.jmi.ac.in/" target="_blank" class="inst-link">Jamia Millia Islamia, India</a>
-                <div class="edu-meta">
-                    <span>2023 - Present</span>
+                <div class="edu-header">
+                    <h4>PhD Bioinformatics</h4>
+                    <span class="year-span">(2023 - Ctd.)</span>
                 </div>
+                <a href="https://www.jmi.ac.in/" target="_blank" class="inst-link"><i class="fas fa-university"></i> Jamia Millia Islamia, India</a>
             </div>
-
             <div class="edu-card edu-msc">
-                <h4>M.Sc. Bioinformatics</h4>
-                <a href="https://www.jmi.ac.in/" target="_blank" class="inst-link">Jamia Millia Islamia, India</a>
-                <div class="edu-meta">
-                    <span>2020 - 2022</span>
+                <div class="edu-header">
+                    <h4>MSc Bioinformatics</h4>
+                    <span class="year-span">(2022)</span>
                 </div>
+                <a href="https://www.jmi.ac.in/" target="_blank" class="inst-link"><i class="fas fa-university"></i> Jamia Millia Islamia, India</a>
             </div>
-
             <div class="edu-card edu-bsc">
-                <h4>B.Sc. (Science)</h4>
-                <a href="https://www.allduniv.ac.in/" target="_blank" class="inst-link">University of Allahabad, UP</a>
-                <div class="edu-meta">
-                    <span>2017 - 2020</span>
+                <div class="edu-header">
+                    <h4>BSc (Science)</h4>
+                    <span class="year-span">(2020)</span>
                 </div>
+                <a href="https://www.allduniv.ac.in/" target="_blank" class="inst-link"><i class="fas fa-university"></i> University of Allahabad, India</a>
             </div>
         </div>
-        <hr class="separator">
     </section>
 
     <section id="experience" class="container">
         <h2 class="section-title">Research Experiences</h2>
         <div class="exp-grid">
-            <div class="exp-box exp-full">
-                <div class="exp-role">PhD Scholar</div>
-                <a href="https://www.jmi.ac.in/" target="_blank" class="exp-inst">Jamia Millia Islamia, New Delhi</a>
+             <div class="exp-box exp-full">
+                <div class="exp-header">
+                    <div class="exp-role">PhD Scholar</div>
+                    <span class="type-badge bg-full">FULL TIME</span>
+                </div>
+                <a href="https://www.jmi.ac.in/" target="_blank" class="exp-inst"><i class="fas fa-university"></i> Jamia Millia Islamia, New Delhi</a>
                 <div class="exp-date">2023 - Present</div>
-                <div class="exp-desc">Machine Learning and Multitargeted Drug Designing to Combat AMR in Enterobacteriaceae. Supervisor: Dr Khalid Raza.</div>
-                <span class="type-badge bg-full">FULL TIME</span>
+                <div class="exp-desc">Machine Learning and Multitargeted Drug Designing to Combat AMR in Enterobacteriaceae.</div>
             </div>
 
             <div class="exp-box exp-part">
-                <div class="exp-role">Project Associate</div>
-                <a href="https://www.icgeb.org/" target="_blank" class="exp-inst">ICGEB, New Delhi, India</a>
+                <div class="exp-header">
+                    <div class="exp-role">Project Associate</div>
+                    <span class="type-badge bg-full">FULL TIME</span>
+                </div>
+                <a href="https://www.icgeb.org/" target="_blank" class="exp-inst"><i class="fas fa-university"></i> ICGEB, New Delhi</a>
                 <div class="exp-date">June 2022 - July 2023</div>
-                <div class="exp-desc">Translational Bioinformatics Group. AI and Computational Drug Design Methods for Combating Cervical Cancer Resistance. Group Leader: Dr Dinesh Gupta.</div>
-                <span class="type-badge bg-part">PROJECT</span>
+                <div class="exp-desc">Translational Bioinformatics Group. AI and Computational Drug Design Methods for Combating Cervical Cancer Resistance. </div>
             </div>
 
              <div class="exp-box exp-full">
-                <div class="exp-role">MSc Dissertation</div>
-                <a href="https://www.jmi.ac.in/" target="_blank" class="exp-inst">Jamia Millia Islamia, New Delhi</a>
+                <div class="exp-header">
+                    <div class="exp-role">MSc Dissertation</div>
+                    <span class="type-badge bg-full">FULL TIME</span>
+                </div>
+                <a href="https://www.jmi.ac.in/" target="_blank" class="exp-inst"><i class="fas fa-university"></i> Jamia Millia Islamia, New Delhi</a>
                 <div class="exp-date">Sept 2021 - May 2022</div>
-                <div class="exp-desc">Role of Drug Enumeration Towards Single Capsule-Based Drug Designing and Development. Supervisor: Dr Khalid Raza.</div>
-                <span class="type-badge bg-full">ACADEMIC</span>
+                <div class="exp-desc">Role of Drug Enumeration Towards Single Capsule-Based Drug Designing and Development.</div>
             </div>
         </div>
         <hr class="separator">
     </section>
 
+    <!-- D.7: AWARDS SECTION -->
+    <section id="awards" class="container">
+        <h2 class="section-title">Awards & Recognitions</h2>
+        <div class="award-box-grid">
+            <div class="award-card">
+                <i class="fas fa-trophy award-badge-icon"></i>
+                <div class="award-content-wrapper">
+                    <div class="award-top">Achievers of the Year</div>
+                    <div class="award-bottom">Awarded by the Vice Chancellor and Provost of J&K Girls Hostel, Jamia Millia Islamia (2023-2024).</div>
+                </div>
+            </div>
+            <div class="award-card">
+                <i class="fas fa-certificate award-badge-icon"></i>
+                <div class="award-content-wrapper">
+                    <div class="award-top">Certificate of Appreciation</div>
+                    <div class="award-bottom">Recognized as "A Patent Holder in advancing knowledge" at 1st JMI Innovators Conclave 2024.</div>
+                </div>
+            </div>
+        </div>
+        <hr class="separator">
+    </section>
+
+    <!-- D.8: PATENTS SECTION -->
     <section id="patents" class="container">
         <h2 class="section-title">Patents (IPR)</h2>
         <div class="grid-container">
@@ -663,64 +1004,44 @@
         <hr class="separator">
     </section>
 
-    <section id="awards" class="container">
-        <h2 class="section-title">Awards & Recognitions</h2>
-        <div class="award-box-grid">
-            <div class="award-card">
-                <div class="award-content-wrapper">
-                    <div class="award-top">Achievers of the Year</div>
-                    <div class="award-bottom">Awarded by the Vice Chancellor and Provost of J&K Girls Hostel, Jamia Millia Islamia (2023-2024).</div>
-                </div>
-                <i class="fas fa-trophy award-badge-icon"></i>
-            </div>
-
-            <div class="award-card">
-                <div class="award-content-wrapper">
-                    <div class="award-top">Certificate of Appreciation</div>
-                    <div class="award-bottom">Recognized as "A Patent Holder in advancing knowledge" at 1st JMI Innovators Conclave 2024.</div>
-                </div>
-                <i class="fas fa-certificate award-badge-icon"></i>
-            </div>
-        </div>
-        <hr class="separator">
-    </section>
-
+    <!-- D.9: PUBLICATIONS SECTION -->
     <section id="publications" class="container">
         <h2 class="section-title">Publications & Scholarly Works</h2>
         
-        <button class="accordion-btn">Journal Articles (Published) <i class="fas fa-chevron-down"></i></button>
+        <!-- Accordion 1: Journal Articles -->
+        <button class="accordion-btn" id="pubs-journal">Journal Articles (Published) <i class="fas fa-chevron-down"></i></button>
         <div class="panel">
             <div class="panel-content">
                 <div class="scrollable-list">
-                    <ol class="pub-list">
-                         <li class="pub-item"><strong>Integrating machine learning and multitargeted drug design to combat antimicrobial resistance: a systematic review</strong><br><em>Journal of Drug Targeting (2025)</em> <a class="pub-doi" href="https://doi.org/10.1080/1061186X.2024.2428984" target="_blank">DOI</a></li>
+                    <ol class="pub-list" reversed>
+                        <li class="pub-item"><strong>Multimodal evaluation of Mannose Engineered Poly Lactic Glycolic Acid Nanoparticles with Granulocyte Colony Stimulating Factor Focused Delivery to Bone Marrow for Neutropenia</strong><br><em>Nature- Scientific Reports (2025)</em> <a class="pub-doi" href="https://doi.org/10.1038/s41598-025-29790-w" target="_blank">DOI</a></li>
+                        <li class="pub-item"><strong>Unravelling mutation patterns in Extended-Spectrum β-Lactamases for precision drug design against AMR in Enterobacteriaceae</strong><br><em>Molecular Genetics and Genomics (2025)</em> <a class="pub-doi" href="https://doi.org/10.1007/s00438-025-02300-3" target="_blank">DOI</a></li>
+                        <li class="pub-item"><strong>Integrating machine learning and multitargeted drug design to combat antimicrobial resistance: a systematic review</strong><br><em>Journal of Drug Targeting (2025)</em> <a class="pub-doi" href="https://doi.org/10.1080/1061186X.2024.2428984" target="_blank">DOI</a></li>
                         <li class="pub-item"><strong>FDA-approved Levophed as an alternative multitargeted therapeutic against cervical cancer transferase, cell cycle, and regulatory proteins</strong><br><em>Computers in Biology and Medicine (2025)</em> <a class="pub-doi" href="https://doi.org/10.1016/j.compbiomed.2025.110163" target="_blank">DOI</a></li>
                         <li class="pub-item"><strong>Evaluating the polypharmacological potency of FEDPN from ChEMBL BioAssays against lung cancer EGFR, ALK, TrkA and KRAS proteins</strong><br><em>Intl. J. Bio. Macromol. (2025)</em> <a class="pub-doi" href="https://doi.org/10.1016/j.ijbiomac.2025.141703" target="_blank">DOI</a></li>
-                        <li class="pub-item"><strong>Unravelling mutation patterns in Extended-Spectrum β-Lactamases for precision drug design against AMR in Enterobacteriaceae</strong><br><em>Molecular Genetics and Genomics (2025)</em> <a class="pub-doi" href="https://doi.org/10.1007/s00438-025-02300-3" target="_blank">DOI</a></li>
-                        <li class="pub-item"><strong>Multimodal evaluation of Mannose Engineered Poly Lactic Glycolic Acid Nanoparticles with Granulocyte Colony Stimulating Factor Focused Delivery to Bone Marrow for Neutropenia</strong><br><em>Nature- Scientific Reports (2025)</em> <a class="pub-doi" href="https://doi.org/10.1038/s41598-025-29790-w" target="_blank">DOI</a></li>
-                         <li class="pub-item"><strong>RCSB Protein Data Bank: Revolutionising Drug Discovery and Design for Over Five Decades</strong><br><em>Medical Data Mining (2025)</em> <a class="pub-doi" href="https://doi.org/10.53388/MDM202508008" target="_blank">DOI</a></li>
+                        <li class="pub-item"><strong>RCSB Protein Data Bank: Revolutionising Drug Discovery and Design for Over Five Decades</strong><br><em>Medical Data Mining (2025)</em> <a class="pub-doi" href="https://doi.org/10.53388/MDM202508008" target="_blank">DOI</a></li>
                         <li class="pub-item"><strong>Probing the Role of Coniferin and Tetrahydrocurcumin from Traditional Chinese Medicine against PSAT1 in Early-stage Ovarian Cancer</strong><br><em>PLoS ONE (2025)</em> <a class="pub-doi" href="http://dx.doi.org/10.1371/journal.pone.0313585" target="_blank">DOI</a></li>
-                        
                         <li class="pub-item"><strong>Reporting multitargeted potency of Tiaprofenic acid against lung cancer: Molecular fingerprinting, MD simulation, and MTT- based cell viability assay studies</strong><br><em>Intl. J. Bio. Macromol. (2024)</em> <a class="pub-doi" href="http://dx.doi.org/10.1016/j.ijbiomac.2024.133872" target="_blank">DOI</a></li>
                         <li class="pub-item"><strong>Integrative Analysis Discovers Imidurea as a dual multitargeted inhibitor of CD69, CD40, SHP2, Lysozyme, GATA3, cCBL, and S-cysteinase from SARS-CoV-2 and M. tuberculosis</strong><br><em>Intl. J. Bio. Macromol. (2024)</em> <a class="pub-doi" href="http://dx.doi.org/10.1016/j.ijbiomac.2024.132332" target="_blank">DOI</a></li>
                         <li class="pub-item"><strong>Deciphering the influenza neuraminidase inhibitory potential of naturally occurring bioflavonoids: An in-silico approach</strong><br><em>Open Chemistry (2024)</em> <a class="pub-doi" href="https://doi.org/10.1515/chem-2024-0053" target="_blank">DOI</a></li>
                         <li class="pub-item"><strong>Microbial biofilm inhibition using magnetic cross-linked polyphenol oxidase aggregates</strong><br><em>ACS Applied Biomaterials (2024)</em> <a class="pub-doi" href="http://dx.doi.org/10.1021/acsabm.4c00175" target="_blank">DOI</a></li>
-                        
                         <li class="pub-item"><strong>Investigating the multitargeted anti-diabetic potential of cucurbitane-type triterpenoid from Momordica charantia: An LC-MS, docking-based MM\GBSA and MD Simulation Study</strong><br><em>J. Biomol. Struct. Dyn. (2023)</em> <a class="pub-doi" href="https://doi.org/10.1080/07391102.2023.2291174" target="_blank">DOI</a></li>
                         <li class="pub-item"><strong>In silico analysis reveals Quinic acid as a multitargeted inhibitor against Cervical Cancer</strong><br><em>J. Biomol. Struct. Dyn. (2022)</em> <a class="pub-doi" href="https://doi.org/10.1080/07391102.2022.2146202" target="_blank">DOI</a></li>
-                         <li class="pub-item"><strong>Macrophage-Targeted Punicalagin Nanoengineering to Alleviate Methotrexate-Induced Neutropenia: A Molecular Docking, DFT, and MD Simulation Analysis</strong><br><em>Molecules (2022)</em> <a class="pub-doi" href="https://doi.org/10.3390/molecules27186034" target="_blank">DOI</a></li>
+                        <li class="pub-item"><strong>Macrophage-Targeted Punicalagin Nanoengineering to Alleviate Methotrexate-Induced Neutropenia: A Molecular Docking, DFT, and MD Simulation Analysis</strong><br><em>Molecules (2022)</em> <a class="pub-doi" href="https://doi.org/10.3390/molecules27186034" target="_blank">DOI</a></li>
                         <li class="pub-item"><strong>Multitargeted molecular dynamic understanding of Butoxypheser against SARS-CoV-2: An in-silico study</strong><br><em>Nat. Prod. Comm. (2022)</em> <a class="pub-doi" href="https://doi.org/10.1177/1934578X221115499" target="_blank">DOI</a></li>
                     </ol>
                 </div>
             </div>
         </div>
-
-         <button class="accordion-btn">Journal Articles (Communicated) <i class="fas fa-chevron-down"></i></button>
+        
+        <!-- Accordion 2: Communicated Articles -->
+        <button class="accordion-btn" id="pubs-comm">Journal Articles (Communicated) <i class="fas fa-chevron-down"></i></button>
         <div class="panel">
             <div class="panel-content">
                 <div class="scrollable-list">
-                    <ol class="pub-list">
-                        <li class="pub-item"><strong>FDA-approved inotropic Dopexamine outperforms Nitrofurantoin and Ceftriaxone in overcoming MDR as a standalone multitargeted drug for E. coli-induced UTIs and BSIs</strong><br><em>Submitted to Journal of Antimicrobial Chemotherapy</em> <span style="color:var(--accent); font-weight:bold; font-size:0.8rem;">(In Pipeline)</span></li>
+                    <ol class="pub-list" reversed>
+                        <li class="pub-item"><strong>Multitarget Docking and Molecular Enumeration Reveal DdpMPyPEPhU as a Potent Modulator of Cell Cycle, Glucocorticoid, and Estrogen Signalling in Breast Cancer</strong><br><em>Submitted to PlosOne</em> <span style="color:var(--accent); font-weight:bold; font-size:0.8rem;">(In Pipeline)</span></li>
+                        <li class="pub-item"><strong>FDA-approved inotropic Dopexamine outperforms Nitrofurantoin and Ceftriaxone in overcoming MDR as a standalone multitargeted drug for E. coli-induced UTIs and BSIs</strong><br><em>Submitted to International Journal of Antimicrobial Agents</em> <span style="color:var(--accent); font-weight:bold; font-size:0.8rem;">(In Pipeline)</span></li>
                         <li class="pub-item"><strong>Blind vs LigSite Docking Identifies Oxanthrazole as a Top Multitargeted Lung Cancer Inhibitor from PubChem BioAssays</strong><br><em>Submitted to IJBIOMAC</em> <span style="color:var(--accent); font-weight:bold; font-size:0.8rem;">(In Pipeline)</span></li>
                         <li class="pub-item"><strong>DeepEntXAI: A CNN-LSTM and Hybrid, LIME-Based Explainable Framework for Enterobacteriaceae Drug Activity Classification and Efficacy Prediction</strong><br><em>Submitted to Molecular Diversity</em> <span style="color:var(--accent); font-weight:bold; font-size:0.8rem;">(In Revision)</span></li>
                     </ol>
@@ -728,15 +1049,16 @@
             </div>
         </div>
 
-        <button class="accordion-btn">Book Chapters <i class="fas fa-chevron-down"></i></button>
+        <!-- Accordion 3: Book Chapters -->
+        <button class="accordion-btn" id="pubs-book">Book Chapters <i class="fas fa-chevron-down"></i></button>
         <div class="panel">
             <div class="panel-content">
                 <div class="scrollable-list">
-                    <ol class="pub-list">
+                    <ol class="pub-list" reversed>
                         <li class="pub-item"><strong>Artificial Intelligence in Omics Integration for Precision Drug Design.</strong><br><em>Springer Nature- Al in Precision Drug Design (2025)</em> <span style="color:var(--accent); font-weight:bold; font-size:0.8rem;">(E-proof submitted)</span></li>
                         <li class="pub-item"><strong>Advancements in artificial intelligence-driven spatial transcriptomics: Decoding cellular complexity.</strong><br><em>Elsevier- Deep Learning in Genetics and Genomics (2025)</em> <a class="pub-doi" href="https://doi.org/10.1016/B978-0-443-27523-4.00006-8" target="_blank">DOI</a></li>
                         <li class="pub-item"><strong>Deep learning in variant detection and annotation.</strong><br><em>Elsevier- Deep Learning in Genetics and Genomics (2025)</em> <a class="pub-doi" href="http://dx.doi.org/10.1016/B978-0-443-27574-6.00010-2" target="_blank">DOI</a></li>
-                         <li class="pub-item"><strong>Computational intelligence methods for biomarkers discovery in autoimmune diseases: case studies.</strong><br><em>Springer Nature (2024)</em> <a class="pub-doi" href="https://doi.org/10.1007/978-981-99-9029-0_15" target="_blank">DOI</a></li>
+                        <li class="pub-item"><strong>Computational intelligence methods for biomarkers discovery in autoimmune diseases: case studies.</strong><br><em>Springer Nature (2024)</em> <a class="pub-doi" href="https://doi.org/10.1007/978-981-99-9029-0_15" target="_blank">DOI</a></li>
                         <li class="pub-item"><strong>Artificial Bee Colony Algorithms in Gene Expression Studies: A Case Study.</strong><br><em>Springer Nature- Solving with Bees (2024)</em> <a class="pub-doi" href="https://doi.org/10.1007/978-981-97-7344-2_10" target="_blank">DOI</a></li>
                         <li class="pub-item"><strong>Generative AI in Drug Designing: Current State-of-the-Art and Perspectives.</strong><br><em>Springer Nature- Generative AI in Drug Designing (2024)</em> <a class="pub-doi" href="https://doi.org/10.1007/978-981-97-8460-8_20" target="_blank">DOI</a></li>
                         <li class="pub-item"><strong>Beispielhafte Implikationen von naturinspirierten Berechnungsmethoden auf Therapeutika und computergestützte Arzneimittelentwicklung.</strong><br><em>Springer Nature (2024)</em> <a class="pub-doi" href="https://doi.org/10.1007/978-981-99-7808-3_15" target="_blank">DOI</a></li>
@@ -748,15 +1070,16 @@
         <hr class="separator">
     </section>
 
+    <!-- D.10: CONFERENCES SECTION -->
     <section id="conferences" class="container">
         <h2 class="section-title">Conferences & Events</h2>
-
+        <!-- Conferences Accordion -->
         <button class="accordion-btn">Conferences & Seminars <i class="fas fa-chevron-down"></i></button>
         <div class="panel">
             <div class="panel-content">
                 <div class="scrollable-list">
-                    <ol class="pub-list">
-						<li class="pub-item"><strong>Oral Presentation: "Dopexamine as a Multitargeted Drug Candidate for E. coli caused Urinary Tract and Bloodstream Infections and Outperforms FDA-approved Drugs Nitrofurantoin and Ceftriaxone"</strong><div class="event-meta">The 1st International Electronic Conference on Medicinal Chemistry and Pharmaceutics, Online | 1-30 November 2025 </div></li>
+                    <ol class="pub-list" reversed>
+                        <li class="pub-item"><strong>Oral Presentation: "Dopexamine as a Multitargeted Drug Candidate for E. coli caused Urinary Tract and Bloodstream Infections and Outperforms FDA-approved Drugs Nitrofurantoin and Ceftriaxone"</strong><div class="event-meta">The 1st International Electronic Conference on Medicinal Chemistry and Pharmaceutics, Online | 1-30 November 2025 </div></li>
                         <li class="pub-item"><strong>Poster Presentation: "DeepEntXAI: A CNN-LSTM and Hybrid, LIME-Based Explainable Framework for Enterobacteriaceae Drug Activity Classification and Efficacy Prediction"</strong><div class="event-meta">AMR Research conference 2025 (ARC 2025), Bengaluru | Aug 21-22, 2025</div></li>
                         <li class="pub-item"><strong>How to Navigate the World of Scientific Article Writing</strong><div class="event-meta">Springer Nature Online Session | May 15, 2025</div></li>
                         <li class="pub-item"><strong>One-Day Awareness Programme on Research Data Management</strong><div class="event-meta">INFLIBNET & JMI, New Delhi | Dec 10, 2024</div></li>
@@ -766,11 +1089,12 @@
             </div>
         </div>
 
+        <!-- Workshops Accordion -->
         <button class="accordion-btn">Workshops Attended <i class="fas fa-chevron-down"></i></button>
         <div class="panel">
             <div class="panel-content">
                  <div class="scrollable-list">
-                    <ol class="pub-list">
+                    <ol class="pub-list" reversed>
                         <li class="pub-item"><strong>Advanced Drug Designing and Computational Biology</strong><div class="event-meta">Jamia Millia Islamia University, New Delhi | Sep 16-22, 2024</div></li>
                         <li class="pub-item"><strong>New Education Policy (NEP) 2020 Sensitisation Programme</strong><div class="event-meta">MMTTC, Jamia Millia Islamia, New Delhi | Aug 10-14, 2024</div></li>
                         <li class="pub-item"><strong>Analysis of NGS Datasets from Bulk, Single-Cell, and Spatial Transcriptomics</strong><div class="event-meta">ICGEB, New Delhi | Aug 07-09, 2024</div></li>
@@ -786,24 +1110,25 @@
         <hr class="separator">
     </section>
 
+    <!-- D.11: PROFESSIONAL ACTIVITIES SECTION -->
     <section id="professional" class="container">
         <h2 class="section-title">Professional Activities</h2>
 
         <button class="accordion-btn">Society Membership <i class="fas fa-chevron-down"></i></button>
         <div class="panel">
             <div class="panel-content">
-                <ul class="pub-list" style="padding-left: 20px;">
+                <ol class="pub-list" reversed style="padding-left: 20px;">
                     <li class="pub-item">Contributing Member of the <strong>American Society for Microbiology (ASM)</strong> (2025-2026).</li>
-                </ul>
+                </ol>
             </div>
         </div>
-
+ 
         <button class="accordion-btn">Peer Reviews <i class="fas fa-chevron-down"></i></button>
         <div class="panel">
             <div class="panel-content">
                 <div class="scrollable-list">
-                    <p style="margin-bottom:15px; font-weight:bold; color:var(--primary);">25+ Reviews for 9 Journals</p>
-                    <ul class="pub-list compact-list" style="margin-top:10px;">
+                    <p style="margin-bottom:15px; font-weight:bold; color:var(--primary);">25+ Verified Peer Reviews</p>
+                    <ul class="compact-list" style="margin-top:10px;">
                         <li class="pub-item">BMC Pregnancy and Childbirth</li>
                         <li class="pub-item">Archives of Microbiology</li>
                         <li class="pub-item">Scientific Reports</li>
@@ -829,68 +1154,160 @@
         </div>
         <hr class="separator">
     </section>
-    
+
+    <!-- D.12: TECHNICAL PROFICIENCY GRID -->
     <section id="technical" class="container">
-        <h2 class="section-title">Technical Proficiency</h2>
-        <ul class="pub-list">
-            <li class="pub-item"><strong>Programming & Scripting:</strong> Python (NumPy, pandas, Matplotlib, Biopython), R (tidyverse, Bioconductor), Perl, MATLAB, Bash scripting, SQL.</li>
-            <li class="pub-item"><strong>Web Development:</strong> PHP, Django, Flask, API development.</li>
-            <li class="pub-item"><strong>Data Analysis & AI:</strong> Weka, TensorFlow, Keras, PyTorch, Scikit-learn, XGBoost, LightGBM, Pandas.</li>
-            <li class="pub-item"><strong>Bioinformatics Tools:</strong> BLAST, FASTA, Clustal Omega, MEGA, Phylip, EMBOSS, HMMER, Bowtie, SAMtools, BWA, MAFFT, Geneious Prime.</li>
-            <li class="pub-item"><strong>Structural Biology:</strong> PyMOL, Chimera, Swiss-PDB Viewer, Modeller, VMD, Rosetta.</li>
-            <li class="pub-item"><strong>Drug Discovery:</strong> AutoDock, SwissDock, InstaDock, GOLD, Glide (Schrödinger Suite), MOE, LigPlot+.</li>
-            <li class="pub-item"><strong>Genomics:</strong> GEO2R, SRA Toolkit, Bowtie2, TopHat, Cufflinks, HTSeq, GATK, Picard, DESeq2, EdgeR.</li>
-            <li class="pub-item"><strong>Cloud & HPC:</strong> AWS, Google Cloud, HPC clusters, SLURM job management.</li>
-        </ul>
+        <h2 class="section-title">Expertise & Technical Proficiencies</h2>
+        
+        <button class="accordion-btn">Computational Biology & Drug Discovery <i class="fas fa-chevron-down"></i></button>
+        <div class="panel">
+            <div class="panel-content">
+                <div class="tech-panel-grid">
+                    <div class="tech-card tc-green">
+                        <div class="tech-sub-title"><i class="fas fa-prescription-bottle-alt"></i> Structural Biology & Drug Design</div>
+                        <ul class="tech-ul">
+                            <li>AutoDock, SwissDock, InstaDock, GOLD, Glide</li>
+                            <li>PyMOL, Chimera, Swiss-PDB Viewer, VMD</li>
+                            <li>Modeller, Rosetta, LigPlot+</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="accordion-btn">Machine Learning, AI & Data Science <i class="fas fa-chevron-down"></i></button>
+        <div class="panel">
+            <div class="panel-content">
+                <div class="tech-panel-grid">
+                    <div class="tech-card tc-orange">
+                        <div class="tech-sub-title"><i class="fas fa-code"></i> Programming & Scripting</div>
+                        <ul class="tech-ul">
+                            <li>Python (NumPy, pandas, Matplotlib, Biopython)</li>
+                            <li>R (tidyverse, Bioconductor)</li>
+                            <li>Perl, MATLAB, SQL</li>
+                        </ul>
+                    </div>
+                    <div class="tech-card tc-teal">
+                        <div class="tech-sub-title"><i class="fas fa-brain"></i> Machine Learning Frameworks</div>
+                        <ul class="tech-ul">
+                            <li>TensorFlow, Keras, PyTorch</li>
+                            <li>Scikit-learn, Weka, XGBoost, LightGBM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="accordion-btn">Genomics & Bioinformatics Tools <i class="fas fa-chevron-down"></i></button>
+        <div class="panel">
+            <div class="panel-content">
+                <div class="tech-panel-grid">
+                    <div class="tech-card tc-blue">
+                        <div class="tech-sub-title"><i class="fas fa-dna"></i> Genomics & NGS</div>
+                        <ul class="tech-ul">
+                            <li>GATK, Picard, DESeq2, EdgeR</li>
+                            <li>Bowtie, SAMtools, BWA, SRA Toolkit</li>
+                            <li>GEO2R, TopHat, Cufflinks, HTSeq</li>
+                        </ul>
+                    </div>
+                    <div class="tech-card tc-green">
+                        <div class="tech-sub-title"><i class="fas fa-project-diagram"></i> Sequence Analysis</div>
+                        <ul class="tech-ul">
+                            <li>BLAST, FASTA, Clustal Omega</li>
+                            <li>MEGA, Phylip, MAFFT, Geneious Prime</li>
+                            <li>EMBOSS, HMMER</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="accordion-btn">Web Development & Cloud <i class="fas fa-chevron-down"></i></button>
+         <div class="panel">
+            <div class="panel-content">
+                <div class="tech-panel-grid">
+                    <div class="tech-card tc-orange">
+                        <div class="tech-sub-title"><i class="fas fa-laptop-code"></i> Web & Cloud</div>
+                        <ul class="tech-ul">
+                            <li>PHP, Django, Flask, API development</li>
+                            <li>AWS, Google Cloud</li>
+                            <li>HPC clusters, SLURM job management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+         </div>
         <hr class="separator">
     </section>
 
+    <!-- D.13: REFEREES GRID -->
     <section id="referees" class="container">
         <h2 class="section-title">Academic Referees</h2>
         <div class="referee-grid">
-            <div class="referee-card">
-                <div class="referee-name">Dr Khalid Raza <span class="referee-role">(PhD Supervisor)</span></div>
+            
+            <div class="referee-card ref-1">
+                <div class="ref-header">
+                    <div class="referee-name">Dr Khalid Raza</div>
+                    <span class="referee-role">(PhD Supervisor)</span>
+                </div>
                 <div class="referee-title-line">Associate Professor</div>
-                <a href="https://www.jmi.ac.in/" target="_blank" class="referee-inst-link">Jamia Millia Islamia, India</a>
+                <div class="ref-inst-row">
+                    <i class="fas fa-university email-badge"></i> 
+                    <a href="https://www.jmi.ac.in/" target="_blank">Jamia Millia Islamia, India</a>
+                </div>
                 <div class="referee-contact">
                     <i class="fas fa-envelope email-badge"></i> <a href="mailto:kraza@jmi.ac.in">kraza@jmi.ac.in</a>
                 </div>
             </div>
-            
-            <div class="referee-card">
-                <div class="referee-name">Dr Dinesh Gupta <span class="referee-role">(PI @ ICGEB)</span></div>
+
+            <div class="referee-card ref-2">
+                <div class="ref-header">
+                    <div class="referee-name">Dr Dinesh Gupta</div>
+                    <span class="referee-role">(PI @ ICGEB)</span>
+                </div>
                 <div class="referee-title-line">Group Leader at TBG</div>
-                <a href="https://www.icgeb.org/" target="_blank" class="referee-inst-link">ICGEB, New Delhi, India</a>
+                <div class="ref-inst-row">
+                    <i class="fas fa-university email-badge"></i> 
+                    <a href="https://www.icgeb.org/" target="_blank">ICGEB, New Delhi, India</a>
+                </div>
                 <div class="referee-contact">
                     <i class="fas fa-envelope email-badge"></i> <a href="mailto:dinesh@icgeb.res.in">dinesh@icgeb.res.in</a>
                 </div>
             </div>
             
-            <div class="referee-card">
-                <div class="referee-name">Dr Shaban Ahmad <span class="referee-role">(MSc, PhD Mentor)</span></div>
-                <div class="referee-title-line">Postdoc Scientist at MEB, PLEN</div>
-                <a href="https://www.ku.dk/" target="_blank" class="referee-inst-link">University of Copenhagen, Denmark</a>
+            <div class="referee-card ref-3">
+                <div class="ref-header">
+                    <div class="referee-name">Dr Shaban Ahmad</div>
+                    <span class="referee-role">(Mentor)</span>
+                </div>
+                <div class="referee-title-line">Postdoc Scientist</div>
+                <div class="ref-inst-row">
+                    <i class="fas fa-university email-badge"></i> 
+                    <a href="https://www.ku.dk/" target="_blank">University of Copenhagen, Denmark</a>
+                </div>
                 <div class="referee-contact">
                     <i class="fas fa-envelope email-badge"></i> <a href="mailto:shaban@plen.ku.dk">shaban@plen.ku.dk</a>
                 </div>
             </div>
             
-            <div class="referee-card">
-                <div class="referee-name">Dr Md Imtaiyaz Hassan <span class="referee-role">(MSC Teacher)</span></div>
-                <div class="referee-title-line">Professor</div>
-                <a href="https://www.jmi.ac.in/" target="_blank" class="referee-inst-link">Jamia Millia Islamia, India</a>
-                <div class="referee-contact">
-                    <i class="fas fa-envelope email-badge"></i> <a href="mailto:mihassan@jmi.ac.in">mihassan@jmi.ac.in</a>
+            <div class="referee-card ref-4">
+                <div class="ref-header">
+                    <div class="referee-name">Dr Md Imtaiyaz Hassan</div>
+                    <span class="referee-role">(MSc Teacher)</span>
                 </div>
+                <div class="referee-title-line">Professor</div>
+                <div class="ref-inst-row"><i class="fas fa-university email-badge"></i> <a href="https://www.jmi.ac.in/" target="_blank">Jamia Millia Islamia, India</a></div>
+                <div class="referee-contact"><i class="fas fa-envelope email-badge"></i> <a href="mailto:mihassan@jmi.ac.in">mihassan@jmi.ac.in</a></div>
             </div>
+            
         </div>
         <hr class="separator">
     </section>
 
+    <!-- D.14: FOOTER -->
     <footer>
         <div class="footer-socials">
-
-	    <a href="mailto:nagmi2300973@st.jmi.ac.in" target="_blank" class="footer-btn s-Email" title="Email"> <i class="fas fa-envelope"></i> </a>
+            <a href="mailto:nagmi2300973@st.jmi.ac.in" target="_blank" class="footer-btn s-Email" title="Email"> <i class="fas fa-envelope"></i> </a>
             <a href="https://orcid.org/0000-0002-7336-8928" target="_blank" class="footer-btn s-orcid" title="ORCID"><i class="ai ai-orcid"></i></a>
             <a href="https://www.researchgate.net/profile/Nagmi-Bano" target="_blank" class="footer-btn s-rg" title="ResearchGate"><i class="ai ai-researchgate"></i></a>
             <a href="https://scholar.google.com/citations?user=HCvLj5sAAAAJ&hl=en" target="_blank" class="footer-btn s-gs" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
@@ -898,30 +1315,45 @@
             <a href="https://www.linkedin.com/in/nagmi-bano-a20a11220/" target="_blank" class="footer-btn s-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             <a href="https://github.com/NagmiBano" target="_blank" class="footer-btn s-gh" title="GitHub"><i class="fab fa-github"></i></a>
             <a href="https://www.scopus.com/authid/detail.uri?authorId=57820576100" target="_blank" class="footer-btn s-scopus" title="Scopus"><i class="ai ai-scopus"></i></a>
-            
         </div>
-        
         <div class="footer-text">
-            &copy; 2026 Nagmi Bano | All Rights Reserved | Updated on 25 January 2026.
+            &copy; Nagmi Bano | 2026 All Rights Reserved.
         </div>
     </footer>
 
-
+    <!-- 
+       SECTION E: JAVASCRIPT LOGIC
+    -->
     <script>
-        // Scroll Logic for Name Reveal
+        // E.1: HEADER SCROLL LOGIC
         window.addEventListener('scroll', function() {
-            const headerName = document.querySelector('.header-name');
-            const hero = document.querySelector('.hero');
-            const triggerHeight = hero.offsetHeight - 150; 
-
-            if (window.scrollY > triggerHeight) {
-                headerName.classList.add('visible');
-            } else {
-                headerName.classList.remove('visible');
+            if (window.innerWidth > 900) {
+                const headerName = document.querySelector('.header-name');
+                const hero = document.querySelector('.hero');
+                const triggerHeight = hero.offsetHeight - 150; 
+                if (window.scrollY > triggerHeight) {
+                    headerName.classList.add('visible');
+                } else {
+                    headerName.classList.remove('visible');
+                }
             }
         });
 
-        // Toggle Mobile Menu
+        // E.2: BACK-TO-TOP LOGIC
+        const backToTopBtn = document.getElementById("back-to-top");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add("visible");
+            } else {
+                backToTopBtn.classList.remove("visible");
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // E.3: MENU TOGGLE (MOBILE)
         function toggleMenu() {
             const navBar = document.querySelector('.nav-list');
             const toggleBtn = document.querySelector('.nav-toggle');
@@ -929,7 +1361,6 @@
             toggleBtn.classList.toggle('open');
         }
 
-        // Close mobile menu when a link is clicked
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -940,7 +1371,15 @@
             });
         });
 
-        // Accordion Logic
+        document.addEventListener('click', function(event) {
+            const navBar = document.querySelector('.nav-list');
+            const toggleBtn = document.querySelector('.nav-toggle');
+            if (navBar.classList.contains('active') && !navBar.contains(event.target) && !toggleBtn.contains(event.target)) {
+                toggleMenu();
+            }
+        });
+
+        // E.4: ACCORDION LOGIC
         const acc = document.getElementsByClassName("accordion-btn");
         for (let i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function() {
@@ -949,14 +1388,101 @@
                 if (panel.style.maxHeight) {
                     panel.style.maxHeight = null;
                 } else {
-                    panel.style.maxHeight = "700px"; 
+                    panel.style.maxHeight = panel.scrollHeight + "px"; 
                 } 
             });
         }
+
+        // E.5: HERO DROPDOWN LOGIC
+        function togglePubStats(e) {
+            if (e.currentTarget.classList.contains('stat-toggle') || e.currentTarget.classList.contains('patent-pub-item')) {
+                 if (e.currentTarget.classList.contains('patent-pub-item')) {
+                     const breakdown = document.getElementById('pub-breakdown');
+                     const toggleIcon = document.querySelector('.stat-toggle i');
+                     breakdown.classList.remove('open');
+                     breakdown.style.maxHeight = "0";
+                     if(toggleIcon) {
+                        toggleIcon.classList.remove('fa-chevron-up');
+                        toggleIcon.classList.add('fa-chevron-down');
+                     }
+                     return; 
+                 }
+                 
+                 e.preventDefault();
+                 e.stopPropagation(); 
+                 const breakdown = document.getElementById('pub-breakdown');
+                 const toggleIcon = e.currentTarget.querySelector('i');
+                 
+                 if (breakdown.classList.contains('open')) {
+                    breakdown.classList.remove('open');
+                    breakdown.style.maxHeight = "0";
+                    toggleIcon.classList.remove('fa-chevron-up');
+                    toggleIcon.classList.add('fa-chevron-down');
+                 } else {
+                    breakdown.classList.add('open');
+                    breakdown.style.maxHeight = breakdown.scrollHeight + "px";
+                    toggleIcon.classList.remove('fa-chevron-down');
+                    toggleIcon.classList.add('fa-chevron-up');
+                 }
+            }
+        }
+
+        // E.6: AUTO-SCROLL HELPER
+        function triggerAccordion(id) {
+            const btn = document.getElementById(id);
+            if (btn) {
+                if (!btn.classList.contains('active')) {
+                    btn.click();
+                }
+                setTimeout(() => {
+                    btn.scrollIntoView({ behavior: "smooth", block: "center" });
+                }, 300);
+            }
+        }
+
+        // E.7: SCROLL SPY
+        const sections = document.querySelectorAll("section");
+        const navLi = document.querySelectorAll(".nav-link");
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLi.forEach((li) => {
+                li.classList.remove("active-section");
+                if (li.getAttribute("href").includes(current)) {
+                    li.classList.add("active-section");
+                }
+            });
+        });
+
+        // E.8: AWARD NUMBERING LOGIC
+        const awardCards = document.querySelectorAll('.award-card');
+        const totalAwards = awardCards.length;
+        
+        awardCards.forEach((card, index) => {
+            const number = totalAwards - index;
+            const badge = document.createElement('div');
+            badge.className = 'award-number';
+            badge.innerText = number;
+            card.appendChild(badge);
+        });
+
+        // E.9: PRINT DATE LOGIC
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateSpan = document.getElementById('print-date');
+            if(dateSpan) {
+                const now = new Date();
+                const dateStr = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+                const timeStr = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+                dateSpan.textContent = `${dateStr} at ${timeStr}`;
+            }
+        });
     </script>
 </body>
-
 </html>
-
-
-
